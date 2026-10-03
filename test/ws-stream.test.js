@@ -49,7 +49,10 @@ test('decoder pauses writes under downstream backpressure and resumes without lo
   decoder.write(packet, () => { accepted = true; });
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(accepted, false);
-  assert.ok(decoder.readableLength <= 60000);
+  // Node's default watermark differs between Windows and Linux. A whole frame
+  // may cross it, but the decoder must stop before buffering another frame.
+  assert.ok(decoder.readableLength >= decoder.readableHighWaterMark);
+  assert.ok(decoder.readableLength < decoder.readableHighWaterMark + data.length);
   const chunks = []; decoder.on('data', b => chunks.push(b));
   const done = once(decoder, 'end'); decoder.end(); await done;
   assert.deepEqual(Buffer.concat(chunks), Buffer.concat([data, data, data]));
