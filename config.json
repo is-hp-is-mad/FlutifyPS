@@ -1,0 +1,96 @@
+{
+  "listen": {
+    "host": "0.0.0.0",
+    "port": 443,
+    "httpRedirectPort": 0,
+    "publicOrigin": ""
+  },
+  "tls": {
+    "key": "cert/server.key",
+    "cert": "cert/server.crt",
+    "passphrase": null,
+    "minVersion": "TLSv1.2",
+    "upstreamRejectUnauthorized": true
+  },
+  "auth": {
+    "username": "",
+    "password": "",
+    "userHeader": "X-Proxy-User",
+    "passHeader": "X-Proxy-Pass"
+  },
+  "limits": {
+    "maxConnections": 1024,
+    "maxUpgradedConnections": 256,
+    "maxWsFrameBytes": 1048576,
+    "maxSockets": 64,
+    "maxTotalSockets": 256,
+    "maxFreeSockets": 16
+  },
+  "security": {
+    "authFailLimit": 10,
+    "authFailWindowMs": 60000,
+    "authFailBanMs": 120000,
+    "trustedProxies": [],
+    "realIpHeader": "cf-connecting-ip",
+    "globalAuthFailLimit": 1000
+  },
+  "disguise": {
+    "path": "media-assets",
+    "fakeStatus": 404,
+    "fakeBodyFile": "",
+    "fakeServer": "nginx",
+    "blockHtml": true
+  },
+  "cookies": {
+    "rewrite": true
+  },
+  "upstreamProxy": "",
+  "whitelist": {
+    "domains": [
+      "api.spotify.com",
+      "accounts.spotify.com",
+      "apresolve.spotify.com",
+      "api-partner.spotify.com",
+      "clienttoken.spotify.com",
+      "spclient.wg.spotify.com",
+      "*.spclient.spotify.com",
+      "regexp:^[a-z0-9-]*(spclient|dealer)[a-z0-9-]*(\\.[a-z0-9-]+)*\\.spotify\\.com$",
+      "*.scdn.co",
+      "*.spotifycdn.com",
+      "regexp:^[a-z0-9-]*(audio|video)[a-z0-9-]*(\\.[a-z0-9-]+)*\\.spotify\\.com$",
+      "betamax.akamaized.net",
+      "regexp:^[a-z0-9-]*spotify[a-z0-9-]*\\.[a-z0-9.-]*akamaized\\.net$"
+    ],
+    "exactOnly": [],
+    "files": [],
+    "geosite": {
+      "file": "",
+      "categories": [
+        "spotify"
+      ]
+    },
+    "allowPorts": false,
+    "allowIpTargets": false
+  },
+  "tunnel": {
+    "enabled": true,
+    "hosts": [],
+    "allowedPorts": [
+      4070,
+      443,
+      80
+    ]
+  },
+  "timeouts": {
+    "upstreamMs": 30000,
+    "streamIdleMs": 120000,
+    "wsIdleMs": 300000,
+    "tunnelIdleMs": 300000,
+    "headersMs": 15000,
+    "requestMs": 60000,
+    "keepAliveMs": 5000,
+    "keepAliveMsecs": 1000,
+    "shutdownMs": 10000
+  },
+  "logLevel": "warn"
+}

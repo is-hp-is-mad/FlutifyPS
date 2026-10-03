@@ -1,0 +1,37 @@
+[Unit]
+Description=FlutifyPS authenticated reverse proxy
+Documentation=file:///opt/flutifyps/README.md
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=flutifyps
+Group=flutifyps
+WorkingDirectory=/opt/flutifyps
+ExecStart=/usr/bin/node /opt/flutifyps/server.js --config /opt/flutifyps/config.json
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+UMask=0077
+NoNewPrivileges=true
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+LockPersonality=true
+LimitNOFILE=4096
+MemoryMax=256M
+# Node/V8 JIT requires executable memory; do not enable MemoryDenyWriteExecute.
+
+[Install]
+WantedBy=multi-user.target

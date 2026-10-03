@@ -1,0 +1,9 @@
+**
+!Dockerfile
+!package.json
+!server.js
+!config.json
+!lib/
+!lib/*.js
+!scripts/
+!scripts/gen-env.js

@@ -1,0 +1,15 @@
+{
+  "name": "flutifyps",
+  "version": "0.1.0",
+  "description": "FlutifyPS: authenticated HTTPS, WebSocket and TCP gateway for Flutify",
+  "private": true,
+  "license": "MIT",
+  "author": "is-hp-is-mad",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "check:public": "node scripts/check-public.js"
+  },
+  "files": ["server.js", "lib/", "config.json", "scripts/gen-env.js", "scripts/gen-cert.sh", "scripts/gen-cert.ps1", "scripts/openssl.cnf", "scripts/fetch-geosite.js", "deploy/", "Dockerfile", "compose.yaml", "README.md", "INTEGRATION.md", "SECURITY.md", "LICENSE"]
+}

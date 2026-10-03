@@ -1,0 +1,41 @@
+# 证书与密钥（不要提交）
+cert/
+*.key
+*.crt
+*.pem
+
+# 凭据（不要提交；用 scripts/gen-env.js 生成）
+.env
+.env.local
+
+# geosite 二进制缓存（用 scripts/fetch-geosite.js 重新下载）
+rules/geosite.dat
+rules/*-domains.txt
+
+# 测试临时文件
+.test-*
+.t-*.log
+.t-*.txt
+.t-*.html
+.t-*.json
+
+# FlutifyPS private configuration and deployment residue
+.env.*
+!.env.example
+config.local.json
+config.production.json
+.creds*
+.d-*
+.chk*
+.v.txt
+.t-*
+demo*.txt
+info.txt
+*.log
+*.err
+*.tgz
+node_modules/
+coverage/
+.tmp/
+.private/
+dist/

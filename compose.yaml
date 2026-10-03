@@ -1,0 +1,37 @@
+services:
+  flutifyps:
+    build: .
+    image: flutifyps:local
+    restart: unless-stopped
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      PROXY_LISTEN_HOST: 0.0.0.0
+      PROXY_LISTEN_PORT: "8443"
+    ports:
+      - "443:8443"
+    volumes:
+      - type: bind
+        source: ./.env
+        target: /opt/flutifyps/.env
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./config.json
+        target: /opt/flutifyps/config.json
+        read_only: true
+      - type: bind
+        source: ./cert
+        target: /opt/flutifyps/cert
+        read_only: true
+    mem_limit: 256m
+    pids_limit: 64
+    stop_grace_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

@@ -1,0 +1,11 @@
+[
+  ".dockerignore", ".env.example", ".gitattributes", ".gitignore", ".github/workflows/ci.yml",
+  "README.md", "INTEGRATION.md", "CONTRIBUTING.md", "SECURITY.md", "REVIEW.md", "LICENSE",
+  "Dockerfile", "compose.yaml", "package.json", "config.json", "server.js",
+  "deploy/flutifyps.service",
+  "lib/security.js", "lib/egress.js", "lib/ws-stream.js", "lib/geosite.js",
+  "scripts/public-files.json", "scripts/check-public.js", "scripts/gen-env.js",
+  "scripts/gen-cert.sh", "scripts/gen-cert.ps1", "scripts/openssl.cnf",
+  "scripts/fetch-geosite.js", "scripts/start.sh", "scripts/start.cmd", "scripts/test.sh",
+  "test/security.test.js", "test/egress.test.js", "test/ws-stream.test.js", "test/integration.test.js"
+]
